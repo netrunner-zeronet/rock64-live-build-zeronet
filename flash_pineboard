@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -x
+set -e
+
+# FIXME: All of the following makes lots of assumptions, should be fixed later
+LODEVICE=$(losetup -f)
+losetup $LODEVICE *.img
+partprobe $LODEVICE
+mount "${LODEVICE}p1" /mnt
+dd conv=notrunc bs=1k seek=8 if="/mnt/boot/pine64/boot0-pine64-plus.bin" of="${LODEVICE}"
+dd conv=notrunc bs=1k seek=19096 if="/mnt/boot/pine64/u-boot-pine64-plus.bin" of="${LODEVICE}"
+umount /mnt
+losetup -d $LODEVICE

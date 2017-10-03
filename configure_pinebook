@@ -12,22 +12,22 @@ set -x
 
 echo "I: create configuration"
 
-SNAP_URL='http://snapshot.debian.org/archive/debian/20161130T215912Z/'
+SNAP_URL='http://snapshot.debian.org/archive/debian/20170530/'
 
-export LB_HDD_PARTITION_START="3072s"
+export LB_HDD_PARTITION_START="40960s"
 export LB_BOOTLOADERS="none"
-export LB_HDD_LABEL="ODROID-C1"
+export LB_HDD_LABEL="PINEBOOK"
 export LB_MKFS_OPTIONS="-O ^64bit,^metadata_csum,uninit_bg"
 
 # Set Version
 VER=$(date +%Y%m%d.%H%M)
 # Set name for image file
-export LIVE_IMAGE_NAME="netrunner-core-$VER"
+export LIVE_IMAGE_NAME="netrunner-core-pinebook-$VER"
 
 echo "I: Format is $FMT"
 
 lb config \
- --architectures armhf \
+ --architectures arm64 \
  --archive-areas 'main contrib non-free' \
  --distribution testing \
  --binary-images hdd \
@@ -54,7 +54,9 @@ lb config \
 echo "I: copy customization"
 test -d customization && cp -rf customization/* config/
 
-sed -i "s,@@TIMESTAMP@@,$DAY,g" config/includes.chroot/boot/boot.ini
+sed -i "s,@@PINE_FLAVOR_METAPACKAGE@@,pinebook-netrunner-core,g" config/package-lists/netrunner.list.chroot
+echo "netrunner-settings-autostart-" >> config/package-lists/netrunner.list.chroot
+
 sed -i "s,@@_VER_@@,${VER},g" config/hooks/live/01-overwrite-release-files.hook.chroot
 
 echo "I: done"
