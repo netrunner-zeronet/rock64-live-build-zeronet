@@ -54,7 +54,7 @@ lb config \
 echo "I: copy customization"
 test -d customization && cp -rf customization/* config/
 
-sed -i "s,@@PINE_FLAVOR_METAPACKAGE@@,pinebook-netrunner-core,g" config/package-lists/netrunner.list.chroot
+sed -i "s,@@PINE_FLAVOR_METAPACKAGE@@,netrunner-pinebook-packages,g" config/package-lists/netrunner.list.chroot
 echo "netrunner-settings-autostart-" >> config/package-lists/netrunner.list.chroot
 
 sed -i "s,@@_VER_@@,${VER},g" config/hooks/live/01-overwrite-release-files.hook.chroot
