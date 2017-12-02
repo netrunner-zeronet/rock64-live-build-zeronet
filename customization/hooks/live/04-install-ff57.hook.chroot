@@ -1,0 +1,4 @@
+echo "I: Download and Install Firefox 57"
+wget http://s3-eu-central-1.amazonaws.com/ds9-eu/debs/firefox/firefox_57.0+build4-0ubuntu0.16.04.5_arm64.deb -O /tmp/ff57.deb
+dpkg -i /tmp/ff57.deb;
+rm /tmp/ff57.deb
