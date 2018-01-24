@@ -7,7 +7,8 @@ LODEVICE=$(losetup -f)
 losetup $LODEVICE *.img
 partprobe $LODEVICE
 mount "${LODEVICE}p1" /mnt
-dd conv=notrunc bs=1k seek=8 if="/mnt/boot/pine64/boot0-pine64-plus.bin" of="${LODEVICE}"
-dd conv=notrunc bs=1k seek=19096 if="/mnt/boot/pine64/u-boot-pine64-plus.bin" of="${LODEVICE}"
+dd if="/mnt/boot/rock64/idbloader.bin" of="${LODEVICE}" seek=64
+dd if="/mnt/boot/rock64/trust.bin" of="${LODEVICE}" seek=24576
+dd if="/mnt/boot/rock64/uboot.img" of="${LODEVICE}" seek=16384
 umount /mnt
 losetup -d $LODEVICE
