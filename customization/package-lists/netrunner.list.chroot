@@ -1,7 +1,6 @@
 phonon4qt5-backend-gstreamer
 phonon-backend-gstreamer
 
-@@PINE_FLAVOR_METAPACKAGE@@
 
 squashfs-tools-
 grub-pc-

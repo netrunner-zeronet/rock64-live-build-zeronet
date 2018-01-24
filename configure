@@ -12,17 +12,17 @@ set -x
 
 echo "I: create configuration"
 
-SNAP_URL='http://snapshot.debian.org/archive/debian/20170530/'
+SNAP_URL='http://snapshot.debian.org/archive/debian/20180115/'
 
-export LB_HDD_PARTITION_START="40960s"
+export LB_HDD_PARTITION_START="32768s"
 export LB_BOOTLOADERS="none"
-export LB_HDD_LABEL="PINE64"
+export LB_HDD_LABEL="ROCK64"
 export LB_MKFS_OPTIONS="-O ^64bit,^metadata_csum,uninit_bg"
 
 # Set Version
 VER=$(date +%Y%m%d.%H%M)
 # Set name for image file
-export LIVE_IMAGE_NAME="netrunner-core-pineboard-$VER"
+export LIVE_IMAGE_NAME="netrunner-core-rock64-$VER"
 
 echo "I: Format is $FMT"
 
@@ -53,8 +53,6 @@ lb config \
 
 echo "I: copy customization"
 test -d customization && cp -rf customization/* config/
-
-sed -i "s,@@PINE_FLAVOR_METAPACKAGE@,pine64-netrunner-core,g" config/package-lists/netrunner.list.chroot
 
 sed -i "s,@@_VER_@@,${VER},g" config/hooks/live/01-overwrite-release-files.hook.chroot
 
