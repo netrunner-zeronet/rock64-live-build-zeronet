@@ -49,6 +49,7 @@ lb config \
  --mirror-chroot $SNAP_URL \
  --mirror-binary $SNAP_URL \
  --mirror-debian-installer $SNAP_URL \
+ --debootstrap-options "--include=gnupg2" \
  $@
 
 echo "I: copy customization"
