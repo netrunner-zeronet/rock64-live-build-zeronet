@@ -1,0 +1,3 @@
+echo "I: Disabling iscsi services"
+systemctl disable iscsi
+systemctl disable iscsid 
