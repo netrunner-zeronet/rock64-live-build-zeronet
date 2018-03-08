@@ -12,7 +12,7 @@ set -x
 
 echo "I: create configuration"
 
-SNAP_URL='http://snapshot.debian.org/archive/debian/20180115/'
+SNAP_URL='http://snapshot.debian.org/archive/debian/20180315/'
 
 export LB_HDD_PARTITION_START="32768s"
 export LB_BOOTLOADERS="none"
