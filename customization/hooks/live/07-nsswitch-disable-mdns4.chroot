@@ -1,0 +1,2 @@
+echo "I: Disabling mdns4 in nsswitch.conf"
+sed -ie "s/hosts:.*/hosts:\t\tfiles dns/g" /etc/nsswitch.conf
