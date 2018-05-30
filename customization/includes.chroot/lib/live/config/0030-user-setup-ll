@@ -118,13 +118,8 @@ Config ()
         # Add user to sudo group
         adduser "$LIVE_USERNAME" sudo ;
         adduser "$LIVE_USERNAME" adm ;
+        adduser "$LIVE_USERNAME" lpadmin   ;
         adduser "$LIVE_USERNAME" debian-tor ;
-        adduser "$LIVE_USERNAME" lpadmin ;
-        adduser "$LIVE_USERNAME" audio ;
-        adduser "$LIVE_USERNAME" sambashare ;
-        adduser "$LIVE_USERNAME" video ;
-        adduser "$LIVE_USERNAME" netdev ;
-        adduser "$LIVE_USERNAME" plugdev ;
         #echo "$LIVE_USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
         
         mkdir -p /home/$LIVE_USERNAME/
