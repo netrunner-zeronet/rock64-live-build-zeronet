@@ -1,2 +1,0 @@
-echo "I: Remove 0030-user-setup [Workaround for useradd hanging]" 
-rm /lib/live/config/0030-user-setup
