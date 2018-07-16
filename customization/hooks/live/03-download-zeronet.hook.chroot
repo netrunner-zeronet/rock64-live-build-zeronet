@@ -17,4 +17,14 @@ tar xvfz $archiveName
 rm $archiveName 
 chmod a+w $installDir
 chmod -R a+w $installDir/$zeronetDirName
+echo "I: Create zeronet user + group..."
+addgroup --system zeronet
+adduser --system --ingroup zeronet --home $installDir/$zeronetDirName zeronet
+usermod -c "Decentralized websites using Bitcoin crypto and the BitTorrent network" zeronet
+usermod -s "/bin/false" zeronet
+chown -R zeronet:zeronet $installDir/$zeronetDirName
+echo "I: Add zeronet user to tor group..."
+usermod -a -G debian-tor zeronet
+echo "I: Enable zeronet service..."
+systemctl enable zeronet
 echo "I: ZeroNet Master installed."
