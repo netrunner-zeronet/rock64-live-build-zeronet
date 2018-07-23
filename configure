@@ -12,7 +12,7 @@ set -x
 
 echo "I: create configuration"
 
-SNAP_URL="http://snapshot.debian.org/archive/debian/$(date +%Y%m%d)/"
+SNAP_URL="http://deb.debian.org/debian/"
 
 export LB_HDD_PARTITION_START="32768s"
 export LB_BOOTLOADERS="none"
@@ -30,7 +30,7 @@ echo "I: Format is $FMT"
 lb config \
  --architectures arm64 \
  --archive-areas 'main contrib non-free' \
- --distribution testing \
+ --distribution stretch \
  --binary-images hdd \
  --mode debian \
  --apt-source-archives false \
