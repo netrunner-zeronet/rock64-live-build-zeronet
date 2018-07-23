@@ -12,8 +12,6 @@ set -x
 
 echo "I: create configuration"
 
-SNAP_URL="http://deb.debian.org/debian/"
-
 export LB_HDD_PARTITION_START="32768s"
 export LB_BOOTLOADERS="none"
 export LB_HDD_LABEL="ROCK64"
@@ -44,12 +42,6 @@ lb config \
  --hdd-size 6000 \
  --firmware-chroot false \
  --security false \
- -m $SNAP_URL \
- --parent-mirror-binary $SNAP_URL \
- --mirror-bootstrap $SNAP_URL \
- --mirror-chroot $SNAP_URL \
- --mirror-binary $SNAP_URL \
- --mirror-debian-installer $SNAP_URL \
  --debootstrap-options "--include=gnupg2" \
  $@
 
