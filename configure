@@ -28,7 +28,7 @@ echo "I: Format is $FMT"
 lb config \
  --architectures arm64 \
  --archive-areas 'main contrib non-free' \
- --distribution stretch \
+ --distribution buster \
  --binary-images hdd \
  --mode debian \
  --apt-source-archives false \
