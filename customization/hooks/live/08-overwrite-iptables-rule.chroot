@@ -10,3 +10,5 @@ cat << EOF > /etc/iptables/rules.v4
 COMMIT
 # Completed on Fri May  4 16:50:34 2018
 EOF
+# Need to set iptables-legacy as iptables here as we use an older kernel
+sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
