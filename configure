@@ -14,7 +14,7 @@ echo "I: create configuration"
 
 export LB_HDD_PARTITION_START="32768s"
 export LB_BOOTLOADERS="none"
-export LB_HDD_LABEL="ROCK64"
+export LB_HDD_LABEL="microsd-z2"
 export LB_MKFS_OPTIONS="-O ^64bit,^metadata_csum,uninit_bg"
 
 # Set Version
