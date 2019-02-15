@@ -4,11 +4,14 @@
 
 zeronetUrl="https://github.com/HelloZeroNet/ZeroNet/archive/master.tar.gz"
 installDir="/opt/zeronet"
+configFile="$installDir/current.conf"
 archiveName="zeronet-master.tar.gz"
 zeronetDirName="ZeroNet-master"
 
 echo "I: Downloading ZeroNet Master..."
 mkdir -p $installDir;
+touch $configFile;
+chmod a+w $configFile;
 cd $installDir;
 wget -c $zeronetUrl -O $installDir/$archiveName
 echo "I: Download complete."
