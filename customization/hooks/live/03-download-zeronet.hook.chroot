@@ -20,6 +20,7 @@ tar xvfz $archiveName
 rm $archiveName 
 chmod a+w $installDir
 chmod -R a+w $installDir/$zeronetDirName
+mkdir -m777 -p $installDir/$zeronetDirName/data
 echo "I: Create zeronet user + group..."
 addgroup --system zeronet
 adduser --system --ingroup zeronet --home $installDir/$zeronetDirName zeronet
