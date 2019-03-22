@@ -2,11 +2,16 @@
 
 ## Do the magic to download zeronet and make it update itself
 
-zeronetUrl="https://github.com/HelloZeroNet/ZeroNet/archive/master.tar.gz"
+zeronetUrl="https://github.com/HelloZeroNet/ZeroNet/archive/py3.tar.gz"
 installDir="/opt/zeronet"
 configFile="$installDir/current.conf"
 archiveName="zeronet-master.tar.gz"
 zeronetDirName="ZeroNet-master"
+
+echo "I: Getting dependencies for Zeronet Py3..."
+apt install -y libffi-dev pkg-config
+python3 -m pip -v install merkletools pyelliptic gevent-websocket bencode.py coincurve
+echo "I: Finished getting dependencies for Zeronet Py3"
 
 echo "I: Downloading ZeroNet Master..."
 mkdir -p $installDir;
@@ -19,6 +24,7 @@ echo "I: Extracting ZeroNet Master..."
 tar xvfz $archiveName
 rm $archiveName 
 chmod a+w $installDir
+mv $installDir/ZeroNet-py3 $installDir/$zeronetDirName
 chmod -R a+w $installDir/$zeronetDirName
 mkdir -m777 -p $installDir/$zeronetDirName/data
 echo "I: Create zeronet user + group..."
