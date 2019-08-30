@@ -7,7 +7,7 @@ set -e
 # losetup $LODEVICE *.img
 # partprobe $LODEVICE
 # mount "${LODEVICE}p1" /mnt
-RET=$(udisksctl loop-setup -f $RESULT --no-user-interaction)
+RET=$(udisksctl loop-setup -f live-config/result/$RESULT --no-user-interaction)
 LOOP=$(echo $RET | awk '{print $5;}' | sed -e 's/\.//g')
 echo $LOOP
 udisksctl mount -b $LOOP
