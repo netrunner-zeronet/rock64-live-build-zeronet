@@ -3,14 +3,10 @@ set -x
 set -e
 
 # FIXME: All of the following makes lots of assumptions, should be fixed later
-# LODEVICE=$(losetup -f)
-# losetup $LODEVICE *.img
-# partprobe $LODEVICE
-# mount "${LODEVICE}p1" /mnt
-LODEVICE=udisksctl loop-setup -f $RESULT
-echo $LODEVICE
-udisksctl mount -b $LODEVICE
-MOUNTED=/media/jenkins/$RESULT
-dd if="/mnt/usr/lib/linux-u-boot-rock64/idbloader.img" of="${MOUNTED}" seek=64
-udisksctl umount -b $LODEVICE
-#losetup -d $LODEVICE
+LODEVICE=$(losetup -f)
+losetup $LODEVICE *.img
+partprobe $LODEVICE
+mount "${LODEVICE}p1" /mnt
+dd if="/mnt/usr/lib/linux-u-boot-rock64/idbloader.img" of="${LODEVICE}" seek=64
+umount /mnt
+losetup -d $LODEVICE
