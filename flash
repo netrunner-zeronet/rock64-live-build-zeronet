@@ -7,12 +7,10 @@ set -e
 # losetup $LODEVICE *.img
 # partprobe $LODEVICE
 # mount "${LODEVICE}p1" /mnt
-RET=$(udisksctl loop-setup -f $RESULT --no-user-interaction)
-LOOP=$(echo $RET | awk '{print $5;}' | sed -e 's/\.//g')
-echo $LOOP
-udisksctl mount -b $LOOP
-MOUNTED=$(udisksctl info -b $LOOP | grep MountPoints | awk '{print $2;}')
-echo $MOUNTED
-dd if="/mnt/usr/lib/linux-u-boot-rock64/idbloader.img" of="${LOOP}" seek=64
-udisksctl umount -b $LOOP
+LODEVICE=udisksctl loop-setup -f $RESULT
+echo $LODEVICE
+udisksctl mount -b $LODEVICE
+MOUNTED=/media/jenkins/$RESULT
+dd if="/mnt/usr/lib/linux-u-boot-rock64/idbloader.img" of="${MOUNTED}" seek=64
+udisksctl umount -b $LODEVICE
 #losetup -d $LODEVICE
