@@ -24,8 +24,10 @@ rm $archiveName
 chmod a+w $installDir
 mv $installDir/ZeroNet-py3 $installDir/$zeronetDirName
 echo "Install Zeronet Py3 requirements"
-python3 -m pip -v $installDir/$zeronetDirName/requirements.txt
+cd $installDir/$zeronetDirName
+python3 -m pip -v requirements.txt
 echo "I: Finished getting dependencies for Zeronet Py3"
+cd $installDir;
 chmod -R a+w $installDir/$zeronetDirName
 mkdir -m777 -p $installDir/$zeronetDirName/data
 echo "I: Create zeronet user + group..."
