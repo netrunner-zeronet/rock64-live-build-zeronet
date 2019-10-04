@@ -42,6 +42,8 @@ lb config \
  --hdd-size 6000 \
  --firmware-chroot false \
  --debootstrap-options "--include=gnupg2" \
+ --security true \
+ --updates true \
  $@
 
 echo "I: copy customization"
