@@ -25,7 +25,7 @@ chmod a+w $installDir
 mv $installDir/ZeroNet-py3 $installDir/$zeronetDirName
 echo "Install Zeronet Py3 requirements"
 cd $installDir/$zeronetDirName
-python3 -m pip -v requirements.txt
+python3 -m pip -v 'requirements.txt'
 echo "I: Finished getting dependencies for Zeronet Py3"
 cd $installDir;
 chmod -R a+w $installDir/$zeronetDirName
