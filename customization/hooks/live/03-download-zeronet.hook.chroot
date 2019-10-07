@@ -7,6 +7,7 @@ installDir="/opt/zeronet"
 configFile="$installDir/current.conf"
 archiveName="zeronet-master.tar.gz"
 zeronetDirName="ZeroNet-master"
+requirementsFile="$installDir/$zeronetDirName/requirements.txt"
 
 echo "I: Getting dependencies for Zeronet Py3..."
 apt install -y libffi-dev pkg-config python3-pip
@@ -23,11 +24,8 @@ tar xvfz $archiveName
 rm $archiveName
 chmod a+w $installDir
 mv $installDir/ZeroNet-py3 $installDir/$zeronetDirName
-echo "Install Zeronet Py3 requirements"
-cd $installDir/$zeronetDirName
-python3 -m pip -v 'requirements.txt'
+pip3 install -r $requirementsFile
 echo "I: Finished getting dependencies for Zeronet Py3"
-cd $installDir;
 chmod -R a+w $installDir/$zeronetDirName
 mkdir -m777 -p $installDir/$zeronetDirName/data
 echo "I: Create zeronet user + group..."
